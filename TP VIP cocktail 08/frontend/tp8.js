@@ -15,11 +15,11 @@ function enleverPersonne(id) {
   // Envoie une requête DELETE pour supprimer la personne par son ID
   axios.delete(`http://127.0.0.1:3000/personne/${id}`)
     .then(response => {
-      console.log('Personne supprimée:', response.data); // Affiche la réponse de l'API après la suppression
+      console.log('La personne a bien était supprimée:', response.data); // Affiche la réponse de l'API après la suppression
       afficherPersonnes();  // Met à jour l'affichage de la liste des personnes
     })
     .catch(error => {
-      console.error('Erreur lors de la suppression:', error); // Gère les erreurs
+      console.error("La personne n'a pas pu être surimer:", error); // Gère les erreurs
     });
 }
 
@@ -37,8 +37,7 @@ function ajouterPersonne(prenom, nom) {
       document.getElementById('nom').value = '';    // Réinitialise le champ nom
     })
     .catch(error => {
-      console.error('Erreur lors de l\'ajout :', error.response?.data || error.message); // Gère les erreurs d'ajout
-      alert('Une erreur est survenue lors de l\'ajout. Veuillez réessayer.'); // Alerte utilisateur en cas d'erreur
+      console.error("Erreur lors de l'ajout :", error); // Gère les erreurs d'ajout
     });
 }
 
@@ -95,8 +94,8 @@ function afficherPersonnes() {
       });
     })
     .catch(error => {
-      console.error('Erreur lors de l\'affichage des personnes:', error); // Gère les erreurs d'affichage
-      alert('Erreur lors de la récupération des données.'); // Alerte utilisateur en cas d'erreur
+      console.error("Erreur lors de l'affichage des personnes:", error); // Gère les erreurs d'affichage
+      alert("Erreur lors de la récupération des données (l'API peut être désactiver"); // Alerte utilisateur en cas d'erreur
     });
 }
 
@@ -111,14 +110,12 @@ function initAjouterPersonne() {
 
     // Vérifie si les champs sont remplis
     if (prenom && nom) {
-      console.log("1"); // Affiche un message pour tester que l'ajout fonctionne
       ajouterPersonne(prenom, nom); // Appelle la fonction d'ajout de personne
     } else {
       alert("Veuillez entrer un prénom et un nom."); // Alerte si les champs sont vides
     }
   });
 }
-
 // Lance l'affichage des personnes et initialise l'ajout au chargement de la page
 window.addEventListener('DOMContentLoaded', () => {
   afficherPersonnes();  // Affiche les personnes au chargement
