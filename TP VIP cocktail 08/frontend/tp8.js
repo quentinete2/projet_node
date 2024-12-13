@@ -65,6 +65,7 @@ function afficherPersonnes() {
         alert("Erreur lors de la récupération des données.");
         return;  // Si la réponse n'est pas un tableau, arrête l'exécution de la fonction
       }
+      console.log(personnes)
       const tbody = document.getElementById('myTbody'); // Récupère le corps de la table
       tbody.innerHTML = ''; // Vide le contenu existant de la table
 
@@ -95,7 +96,7 @@ function afficherPersonnes() {
     })
     .catch(error => {
       console.error("Erreur lors de l'affichage des personnes:", error); // Gère les erreurs d'affichage
-      alert("Erreur lors de la récupération des données (l'API peut être désactiver"); // Alerte utilisateur en cas d'erreur
+      alert("Erreur lors de la récupération des données (l'API peut être désactiver)"); // Alerte utilisateur en cas d'erreur
     });
 }
 
